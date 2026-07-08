@@ -101,15 +101,13 @@ code{font-family:'IBM Plex Mono',monospace;font-size:.9em;background:#f2f0ea;pad
   <header class="cover">
     <p class="kicker">Illustrated construction manual · rendered in 3D · Rev B</p>
     <h1>Building the Launcher — physically</h1>
-    <p class="sub">Every stage of the build as an interactive 3D model, to scale, so you can see each part and how it interacts. Several stages animate the mechanism — the spring compressing, the self-latching cock, the fire, the servo trip, and the single-drop feed.</p>
+    <p class="sub">Every stage of the build as an interactive 3D model, to scale, so you can see each part and how it interacts. Several stages animate the mechanism — the spring compressing, the self-latching cock, and the fire.</p>
     <div class="key">
       <span><span class="dot" style="background:#c9a542;border-color:#8a6d1f"></span>brass barrel</span>
       <span><span class="dot" style="background:#d8c397;border-color:#9a7d47"></span>plunger</span>
       <span><span class="dot" style="background:#b9bdc4;border-color:#6b6d72"></span>steel pin/spring</span>
       <span><span class="dot" style="background:#ccd0d6;border-color:#5f6570"></span>sear</span>
       <span><span class="dot" style="background:#9a9a95;border-color:#5f5e5a"></span>bracket/base</span>
-      <span><span class="dot" style="background:#1f8f73;border-color:#0F6E56"></span>servo</span>
-      <span><span class="dot" style="background:#d8bd8a;border-color:#9a7d47"></span>ply/wedge</span>
     </div>
     <p class="hint">Drag to orbit · scroll to zoom · animated stages loop automatically · models framed to scale (mm)</p>
   </header>
@@ -593,32 +591,6 @@ const STAGES = [
       '<b>Tune the angle</b> until it lands soft in your palm — repeatably.'],
     notes:[['check','Green light: cock → release → lands in your hand repeatably, no crushing, many times. Only then add the servo.']] },
 
-  { id:'H', title:'Release servo — the linkage', tools:'servo · bracket · stiff pushrod', build:H, animated:true,
-    steps:['Mount the <b>release servo</b> near the pivot.',
-      'Link the horn to the sear <b>tail</b> with a <b>stiff pushrod</b> so rotating lifts the hook.',
-      'Signal → <code>GPIO4</code>; set <code>release_rest</code> / <code>release_trip</code> (~20° that clears the pin).'],
-    notes:[['tip','Leave slack at rest — the return band holds the hook, the servo only trips. Spring load never sits on the servo.'],
-      ['check','\u201Ccig me\u201D → servo lifts the sear → a cigarette fires. First end-to-end shot.']] },
-
-  { id:'I', title:'Magazine & feed — perpendicular, single-drop', tools:'3 mm acrylic/ply · feed servo · gate', build:I, animated:true,
-    steps:['Cut a column <b>~86 mm internal</b>, cigs <b>parallel to the barrel</b>, stacked like coins.',
-      'Mount it <b>perpendicular to the barrel</b> over the breech load point (stays bore-aligned, feeds at 45°).',
-      'Open-topped <b>trough</b> so the bottom cig drops onto the plunger face.',
-      'Add a <b>gate</b> (one-cig pocket) on the <b>feed servo</b> (<code>GPIO5</code>); tune throw (~1 Ø) so exactly one drops.'],
-    notes:[['warn','Don\u2019t stand the magazine straight up — a cig must arrive parallel to the tight bore or it jams.'],
-      ['check','Each feed cycle drops one and only one cigarette onto the plunger face.']] },
-
-  { id:'J', title:'Auto-reload switch', tools:'lever microswitch · wire', build:J, animated:true,
-    steps:['Mount a <b>lever microswitch</b> at the breech, pressed when the plunger is fully back (re-cocked).',
-      'Wire: one leg → <code>GPIO6</code>, other → GND. Firmware runs the feed when it closes.',
-      'Cycle: \u201Ccig me\u201D → fires → pull back to re-cock → switch trips → next cig drops → ready.'],
-    notes:[['check','Fire, re-cock, and the reload sequences automatically (fire → re-cock → feed).']] },
-
-  { id:'K', title:'Mount — 40° wedge & wall cleat', tools:'3 mm ply · French cleat · anchors', build:K, animated:false,
-    steps:['Build the <b>~40° wedge base</b> and fix the launcher to it (keep the magazine on its angle).',
-      'Attach half a <b>French cleat</b> to the back; mount the mating half on the wall at reachable height.',
-      'Hang it, aim the muzzle at your catch spot, confirm it lifts off for reload/re-cock.'],
-    notes:[['check','Mounted, powered, aimed. Say \u201Ccig me,\u201D catch, re-cock, repeat.']] },
 ];
 
 const wrap = document.getElementById('stages');
